@@ -1,0 +1,21 @@
+---
+- name: Updating broker.id server 1
+  lineinfile:
+    destfile: "{{ kafka_server_conf }}"
+    regexp: 'broker.id=0'
+    line: 'broker.id=1'
+  when: (inventory_hostname == "{{ zk1_host }}")
+
+- name: set kafka server properties 2
+  lineinfile:
+    destfile: "{{ kafka_server_conf }}"
+    regexp: 'broker.id=0'
+    line: 'broker.id=2'
+  when: (inventory_hostname == "{{ zk2_host }}")
+
+- name: Updating broker.id in all servers
+  lineinfile:
+    destfile: "{{ kafka_server_conf }}"
+    regexp: 'zookeeper.connect=localhost:2181'
+    line: 'zookeeper.connect={{ zk_hosts }}'
+

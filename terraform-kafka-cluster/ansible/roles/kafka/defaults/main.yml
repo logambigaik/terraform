@@ -1,0 +1,7 @@
+---
+
+kafka_server_conf: "/home/ansible/kafka/config/server.properties"
+
+zk1_host: "{{ hostvars[groups['kafka'][0]]['inventory_hostname'] }}"
+zk2_host: "{{ hostvars[groups['kafka'][1]]['inventory_hostname'] }}"
+zk_hosts: "{{ zk1_host }}:2181,{{ zk2_host }}:2181"

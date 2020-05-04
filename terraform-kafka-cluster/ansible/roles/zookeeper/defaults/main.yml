@@ -1,0 +1,9 @@
+---
+zookeeper_data: "/home/ansible/zookeeper/data"
+zookeeper_data_myid: "/home/ansible/zookeeper/data/myid"
+zookeeper_server_conf: "/home/ansible/kafka/config/zookeeper.properties"
+zk1_host: "{{ hostvars[groups['kafka'][0]]['inventory_hostname'] }}"
+zk2_host: "{{ hostvars[groups['kafka'][1]]['inventory_hostname'] }}"
+zk3_host: "{{ hostvars[groups['zookeeper'][0]]['inventory_hostname'] }}"
+zk4_host: "{{ hostvars[groups['zookeeper'][1]]['inventory_hostname'] }}"
+

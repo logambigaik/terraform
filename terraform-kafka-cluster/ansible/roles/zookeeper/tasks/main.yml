@@ -1,0 +1,29 @@
+---
+
+- name: updating myid of zookeeper data for server 1
+  lineinfile:
+    destfile: "{{ zookeeper_data_myid }}"
+    line: '1'
+  when: (inventory_hostname == "{{ zk1_host }}")
+
+- name: updating myid of zookeeper data for server 2
+  lineinfile:
+    destfile: "{{ zookeeper_data_myid }}"
+    line: '2'
+  when: (inventory_hostname == "{{ zk2_host }}")
+
+- name: change data directory of zookeeper
+  lineinfile:
+    destfile: "{{ zookeeper_server_conf }}"
+    regexp: 'dataDir=/tmp/zookeeper'
+    line: 'dataDir={{ zookeeper_data }}'
+
+- name: add servers data inside the zookeeper config file
+  blockinfile:
+    path: "{{ zookeeper_server_conf }}"
+    block: |
+      server.1={{ zk3_host }}:2888:3888
+      server.2={{ zk4_host }}:2888:3888
+      initLimit=5
+      syncLimit=2
+

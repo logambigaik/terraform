@@ -1,0 +1,10 @@
+---
+- name: starting zookeeper service
+  service:
+    name: zookeeper
+    state: started
+
+- name: starting kafka service
+  service:
+    name: kafka
+    state: started

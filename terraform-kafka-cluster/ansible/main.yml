@@ -1,0 +1,10 @@
+---
+#
+# Playbook to update lines in server.properties
+#
+- hosts: kafka
+  become_user: ansible
+  roles:
+  - { role: zookeeper }
+  - { role: kafka }
+  - { role: services }
