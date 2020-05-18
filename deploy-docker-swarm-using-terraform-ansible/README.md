@@ -34,7 +34,7 @@ Press ENTER to accept the PPA addition
 Clone Source code from Github:
 ------
     git clone https://github.com/VamsiTechTuts/awsautomationrepo.git
-    cd awsautomationrepo/deploy-docker-swarm-using-terraform-ansible
+    cd terraform/deploy-docker-swarm-using-terraform-ansible
     
 Edit Key_name with in the variable.tf file
 ----
